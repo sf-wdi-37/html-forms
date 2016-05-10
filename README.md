@@ -1,16 +1,38 @@
-# HTML5 Forms
+<!--
+Market: SF
+-->
 
-| Objectives |
-| :--- |
-| Explore HTML Forms and Inputs |
-| Understand the difference between a `method` and an `action` |
-| Create forms that utilize parameters |
+![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+
+# HTML Forms
+
+## Why is this important?
+<!-- framing the "why" in big-picture/real world examples -->
+*This workshop is important because:*
+
+Forms are an important way a web application receive user input. The proper use of forms makes it easier to develop accessible websites with a good user experience.
+
+## What are the objectives?
+<!-- specific/measurable goal for students to achieve -->
+*After this workshop, developers will be able to:*
+
+- Evaluate the proper usage of HTML form and input options
+- Compare and contrast the difference between a `method` and an `action`
+- Create forms that generate query parameters
+
+## Where should we be now?
+<!-- call out the skills that are prerequisites -->
+*Before this workshop, developers should already be able to:*
+
+- Write HTML & JavaScript
+- Understand the basics of the client/server model
+- Have exposure to jQuery & Bootstrap
 
 ### An Example `<form>` Element (Tag)
 
 ```html
 <form method="POST" action="/page">
-  <input type="text" name="page_name" />
+  <input type="text" name="pageName" />
   <input type="submit" value="Create" />
 </form>
 ```
@@ -26,11 +48,27 @@ In the opening of the `<form>` tag you can see two attributes: `method` & `actio
 
 >For now simply understand that it is convention for [GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) to be used in a request when the client wants to receive data, and for [POST](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5) to be used in a request when the client wants to send data.
 
-**Client / Server Model **
+###Challenge: Doomed?
+
+Create an html `form` that, on submit, sends the user to "hasthelargehadroncolliderdestroyedtheworldyet.com". Hint: what's the form action? Bonus: Can you change the submit button to say "Are we doomed?".
+
+<details>
+<summary>Example solution</summary>
+
+```html
+<form action="http://hasthelargehadroncolliderdestroyedtheworldyet.com" method="GET">
+  <input type="submit" value="Are we doomed!?">
+</form>
+```
+
+</details>
+
+
+**Client / Server Model**
 
 ![client/server](https://mdn.mozillademos.org/files/4291/client-server.png)
 
-## Common Inputs (Fun Toys!)
+## Common Inputs
 
 | Field Type | HTML Code | Widget (Control) | Notes |
 |:-- |:-- |:-- |:-- |
@@ -75,11 +113,28 @@ Radio buttons or checkboxes:
   group (or name) can be checked.
 - **`value`**: the data or value that is returned for a specific group (a multi-element control), if
   this element is checked.
+  
+### Challenge: Login Form
 
-## Form Submission Demo
-#### Round 1.
+Create an html `form` with two inputs: one for a username (named "username"), the other for password (named "password") (normally you don't see your password when you type it, so make sure it's blocked out!). What happens in the URL when you click submit?
 
-Given the following HTML...
+<details>
+<summary>Example solution</summary>
+
+```html
+<form>
+	<input type="text" name="username" placeholder=" username..." required>
+	<input type="password" password="password" placeholder="password..." required>
+	<input type="submit">
+</form>
+```
+
+</details>
+
+
+## Form Submission Experiments
+
+1. Given the following HTML...
 
 ``` html
 <form>
@@ -97,7 +152,7 @@ We did not supply a form `action`. That means that it will default to the curren
 <details>
 <summary>**What data will be submitted to the server?** (Click Here)</summary>
 <br>
-* **instrument**: "bongos"
+instrument: "bongos"
 </details>
 
 <details>
@@ -107,9 +162,7 @@ We did not supply a form `action`. That means that it will default to the curren
 </details>
 
 
-#### Round 2.
-
-Given the following HTML...
+2. Given the following HTML...
 
 ``` html
 <form action="https://musicbrainz.org/search" method="GET">
@@ -129,8 +182,7 @@ We are making a "GET" request to "https://musicbrainz.org/search".
 <details>
 <summary>**What data will be submitted to the server?** (Click Here)</summary>
 <br>
-* **artist**: "Adele"
-* **type**: "artist"
+artist: "Adele", type: "artist"
 </details>
 
 <details>
@@ -177,27 +229,27 @@ If we want to grab **all** of the data (name/value pairs) in the form, we can us
 $("form").serialize(); // e.g. "?query=Adele&type=artist"
 ```
 
-Generally we will do this when the user clicks "submit", in combination with a `submit` listener and `preventDefault`, then we will use `ajax` to submit the form in the background (without ever refreshing the page!)
+Generally we will do this when the form is "submit". Calling `preventDefault` allows us to instead submit the form data in the background without ever refreshing the page!
 
 ``` javascript
 $("form").on("submit", function(event){
     event.preventDefault(); // Stops the form from submitting!
-    var form_data = $(this).serialize();
+    var formData = $(this).serialize();
+    console.log("form data is:", formData);
     // ... verify the user didn't miss anything
-    // ... add a spinner wheel to the page
-    // ... send the form_data to the server using AJAX
+    // ... send the form data to the server
     // ... wait for a response
-})
+    // ... (we'll learn these additional steps soon enough)
 ```
 
-> **Reminder**: You do not need jQuery to submit a form. We use jQuery to *stop* a form from submitting, and to *manually* submit data ourselves, with the goal of never causing the page to refresh.
+> **Reminder**: You do not need jQuery to submit a form.
 
 
-## Good Looking Forms
-#### The `<label>` Element (Tag)
+## Sexy Forms
+#### The `<label>` Element
 We encourage you to always use the optional `<label>` tag with each of your form inputs.
 
-    "This is the most important element if you want to build accessible forms." *— MDN*
+>"This is the most important element if you want to build accessible forms." — MDN
 
 There are two ways to use labels correctly:
 
@@ -237,11 +289,11 @@ For super good looking forms, you'll need to dig into the docs: [Bootstrap Forms
 
 ## Common Validations
 
-Form validations help to prevent users from submitting bad data to the server:
+Form validations help to prevent users from submitting bad data to the server. They are very important to improve UX, but *do not increase the security* of the application.
 
 * a missing or empty field (required)
-* an email address that was missing an "@" symbol (wrong format)
-* a password that is obiously too short (wrong length)
+* an email address that was missing an "@" symbol (wrong pattern)
+* a password that is obiously too short (invalid length)
 
 #### `required` attribute
 
@@ -280,12 +332,58 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 </form>
 ```
 
+## Independent Practice
 
-##Further Reading (optional)
+1. Create an html form that contains the html5 [color-picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color) input (named "i"). When the user picks a color, let's say one with the hex code `#18967A`, and clicks submit, redirect them to, e.g. "https://www.wolframalpha.com/input/?i=%2318967A".
+
+> The `#` character automatically gets converted to `%23` in this context because it is a special character and **not a fragment** in this context.
+
+<details>
+<summary>Example solution</summary>
+
+```html
+<form action="https://www.wolframalpha.com/input/" method="GET">
+  <input type="color" name="i">
+  <input type="submit" value="search">
+</form>
+```
+
+</details>
+
+2. Create an html form that searches github for code examples that match a specific query (q) and language (l). Use `html`, `javascript`, and `ruby` as the languages the user can select from a drop down menu. A search for "audio" in the language "javascript" should direct to https://github.com/search?q=audio&l=javascript.
+
+<details>
+<summary>Example solution</summary>
+
+```html
+<form action="https://github.com/search" method="GET">
+  <input type="text" name="q" placeholder="search">
+  <select name="l">
+    <option value="HTML">HTML</option>
+    <option value="Javascript">Javascript</option>
+    <option value="Ruby">Ruby</option>
+  </select>
+  <input type="submit" value="Search Github">
+</form>
+```
+
+</details>
+
+3. Bonus: Bootstrap the forms!
+
+## Closing Thoughts
+
+* What is a form `method` and a form `action`?
+* How do we prevent a form's submission from leaving or refreshing the current page?
+* Do validations make our application more secure?
+* What does jQuery's `.serialize` method do?
+
+## Additional Resources
 
 MDN has a number of exhaustive resources on HTML forms and inputs. It can be a lot to absorb, so look for patterns and try to grasp the big picture.
 
-* [HTML Form Reference](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms) is a great resource and has been distilled below.
+* [HTML Form Reference](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms)
 * [HTML Input Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
 * [Native Form Widgets](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/The_native_form_widgets)
-* [Form Validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Data_form_validation).
+* [Form Validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Data_form_validation)
+* [Inspiration for Text Inputs](http://tympanus.net/codrops/2015/01/08/inspiration-text-input-effects/)
