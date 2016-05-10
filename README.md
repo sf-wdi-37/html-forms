@@ -134,7 +134,7 @@ Create an html `form` with two inputs: one for a username (named "username"), th
 
 ## Form Submission Experiments
 
-1. Given the following HTML...
+1) Given the following HTML...
 
 ``` html
 <form>
@@ -162,7 +162,7 @@ instrument: "bongos"
 </details>
 
 
-2. Given the following HTML...
+2) Given the following HTML...
 
 ``` html
 <form action="https://musicbrainz.org/search" method="GET">
@@ -334,7 +334,7 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 
 ## Independent Practice
 
-1. Create an html form that contains the html5 [color-picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color) input (named "i"). When the user picks a color, let's say one with the hex code `#18967A`, and clicks submit, redirect them to, e.g. "https://www.wolframalpha.com/input/?i=%2318967A".
+1) Create an html form that contains the html5 [color-picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color) input (named "i"). When the user picks a color, let's say one with the hex code `#18967A`, and clicks submit, redirect them to, e.g. "https://www.wolframalpha.com/input/?i=%2318967A".
 
 > The `#` character automatically gets converted to `%23` in this context because it is a special character and **not a fragment** in this context.
 
@@ -350,7 +350,7 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 
 </details>
 
-2. Create an html form that searches github for code examples that match a specific query (q) and language (l). Use `html`, `javascript`, and `ruby` as the languages the user can select from a drop down menu. A search for "audio" in the language "javascript" should direct to https://github.com/search?q=audio&l=javascript.
+2) Create an html form that searches github for code examples that match a specific query (q) and language (l). Use `html`, `javascript`, and `ruby` as the languages the user can select from a drop down menu. A search for "audio" in the language "javascript" should direct to https://github.com/search?q=audio&l=javascript.
 
 <details>
 <summary>Example solution</summary>
@@ -369,7 +369,7 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 
 </details>
 
-3. Bonus: Bootstrap the forms!
+3) Bonus: Bootstrap the forms!
 
 ## Closing Thoughts
 
