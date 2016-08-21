@@ -31,9 +31,10 @@ Forms are an important way a web application receive user input. The proper use 
 ### An Example `<form>` Element (Tag)
 
 ```html
-<form method="POST" action="/page">
-  <input type="text" name="pageName" />
-  <input type="submit" value="Create" />
+<form method="POST" action="/entries">
+  <input type="text" name="title" />
+  <input type="text" name="content" />
+  <input type="submit" value="Create an Entry" />
 </form>
 ```
 
