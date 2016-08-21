@@ -26,7 +26,7 @@ Forms are an important way a web application receive user input. The proper use 
 
 - Write HTML & JavaScript
 - Understand the basics of the client/server model
-- Have exposure to jQuery & Bootstrap
+- Have exposure to jQuery
 
 ### An Example `<form>` Element (Tag)
 
@@ -244,48 +244,28 @@ $("form").on("submit", function(event){
 
 > **Reminder**: You do not need jQuery to submit a form.
 
-
-## Sexy Forms
-#### The `<label>` Element
+## The `<label>` element and `placeholder` attribute
 We encourage you to always use the optional `<label>` tag with each of your form inputs.
 
 >"This is the most important element if you want to build accessible forms." — MDN
 
-There are two ways to use labels correctly:
+**Label**
 
 ```html
-<!-- Simple (nested) label example -->
-<label>Username
-  <input type="text" name="username" />
-</label>
-
-<!-- Using the "for" attribute with the input's id -->
-<!-- This is the preferred method if you are using Bootstrap -->
-<label for="password">Username</label>
+<label for="password">Password:</label>
 <input id="password" type="text" name="password" />
 ```
 
-> Make sure the label's `for` attribute matches the input's `id` attribute!
+>"*Do not use the placeholder attribute instead of a <label> element*. Their purposes are different: the <label> attribute describes the role of the form element; that is, it indicates what kind of information is expected, the placeholder attribute is a hint about the format the content should take. There are cases in which the placeholder attribute is never displayed to the user, so the form must be understandable without it." -MDN
 
-#### Bootstrap Forms
-Out of the box, unstyled HTML5 `inputs` look *terrible*.
 
-Bootstrap to the rescue!
+**Placeholder**
 
-``` html
-<form>
-    <div class="form-group">
-        <label for="exampleInput">Example Bootstrap Input</label>
-        <input type="text" class="form-control" id="exampleInput">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+```html
+<input type="text" name="username" placeholder="Enter a unique username...">
 ```
 
-Note that the `form-group` class is meant to "group" together `label`/`input` pairs (and give them more vertical whitespace / breathing room). Also note that each `input` element receives a `form-control` class.
-
-For super good looking forms, you'll need to dig into the docs: [Bootstrap Forms](https://getbootstrap.com/css/)
-
+> Make sure the label's `for` attribute matches the input's `id` attribute!
 
 ## Common Validations
 
