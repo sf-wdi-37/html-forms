@@ -336,7 +336,7 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 
 **1)** Create an html form that contains the html5 [color-picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color) input (named "i"). When the user picks a color, let's say one with the hex code `#18967A`, and clicks submit, redirect them to, e.g. "https://www.wolframalpha.com/input/?i=%2318967A".
 
-> Note: the `#` character automatically gets converted to `%23` in this context because it is a special character and **not a fragment** in this context.
+> **Note:** the `#` character automatically gets converted to `%23` in this context because it is a special character and **not a fragment** in this context.
 
 <details>
 <summary>Example solution</summary>
