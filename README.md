@@ -144,19 +144,19 @@ Create an html `form` with two inputs: one for a username (named "username"), th
 ```
 
 <details>
-<summary>**What endpoint/action are we submitting to?** (Click Here)</summary>
+<summary>**What endpoint/action are we submitting to?**</summary>
 <br>
 We did not supply a form `action`. That means that it will default to the current endpoint. In otherwords, you will refresh the current page.
 </details>
 
 <details>
-<summary>**What data will be submitted to the server?** (Click Here)</summary>
+<summary>**What data will be submitted to the server?**</summary>
 <br>
 instrument: "bongos"
 </details>
 
 <details>
-<summary>**What will that data look like? How will it be formatted?** (Click Here)</summary>
+<summary>**What will that data look like? How will it be formatted**</summary>
 <br>
 `?instrument=bongos`
 </details>
@@ -174,19 +174,19 @@ instrument: "bongos"
 ```
 
 <details>
-<summary>**What endpoint/action are we submitting to?** (Click Here)</summary>
+<summary>**What endpoint/action are we submitting to?**</summary>
 <br>
 We are making a "GET" request to "https://musicbrainz.org/search".
 </details>
 
 <details>
-<summary>**What data will be submitted to the server?** (Click Here)</summary>
+<summary>**What data will be submitted to the server?**</summary>
 <br>
 artist: "Adele", type: "artist"
 </details>
 
 <details>
-<summary>**What will that data look like? How will it be formatted?** (Click Here)</summary>
+<summary>**What will that data look like? How will it be formatted?**</summary>
 <br>
 It will be in the form of a query parameter: `?query=adele&type=artist`
 </details>
