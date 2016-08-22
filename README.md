@@ -222,7 +222,7 @@ $("input[name=query]").val(); // "Adele"
 $("input#artist").attr("name"); // "query"
 ```
 
-> **Note**: jQuerys `text` method will not work on inputs!
+> **Note**: jQuery's `text` method will not work on inputs!
 
 If we want to grab **all** of the data (name/value pairs) in the form, we can use jQuery's [`serialize` method](http://api.jquery.com/serialize/).
 
