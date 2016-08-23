@@ -200,7 +200,7 @@ Sometimes we want to submit a form, in the background, without ever refreshing t
 When a form is submitted it triggers the `submit` event. We can listen to this event using jQuery.
 
 ``` javascript
-$("form").on("submit", function(event){
+$("form").on("submit", function(event) {
     alert("See you later! You're submitting a form!")
 })
 ```
@@ -208,7 +208,7 @@ $("form").on("submit", function(event){
 In order to **stop** the form from submitting, we have to prevent it's *default* behavior.
 
 ``` javascript
-$("form").on("submit", function(event){
+$("form").on("submit", function(event) {
     event.preventDefault(); // Stops the form from submitting!
     alert("You're not going anywhere! (You prevented the form from submitting).")
 })
@@ -233,7 +233,7 @@ $("form").serialize(); // e.g. "?query=Adele&type=artist"
 Generally we will do this when the form is "submit". Calling `preventDefault` allows us to instead submit the form data in the background without ever refreshing the page!
 
 ``` javascript
-$("form").on("submit", function(event){
+$("form").on("submit", function(event) {
     event.preventDefault(); // Stops the form from submitting!
     var formData = $(this).serialize();
     console.log("form data is:", formData);
@@ -241,6 +241,7 @@ $("form").on("submit", function(event){
     // ... send the form data to the server
     // ... wait for a response
     // ... (we'll learn these additional steps soon enough)
+}
 ```
 
 > **Reminder**: You do not need jQuery to submit a form.
