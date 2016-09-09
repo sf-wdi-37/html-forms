@@ -166,7 +166,7 @@ instrument: "bongos"
 
 ``` html
 <form id="artist-search-form" action="https://musicbrainz.org/search" method="GET">
-    <label for="query">Search by Music Artist</label>
+    <label for="query">Search by Artist</label>
     <input id="query" name="query" value="Adele">
     <input id="type" name="type" value="artist" hidden>
     <input type="submit">
@@ -209,12 +209,17 @@ $("#artist-search-form").addEventListener("submit", function(event) {
 Let's grab data from the form by using the keyword `this`, which refers to the element that triggered the event—aka, the form! Then let's drill down into the forms data using `.querySelector` to target children elements inside it.
 
 ``` javascript
-$("#artist-search-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Stops the form from submitting!
-    var artist = this.querySelector("#artist").value;
-    var type = this.querySelector("#type").value;
-    console.log("Artist is:", artist, ". Type is:", type);
-})
+// target the form
+var artistSearchFrom = document.querySelector("#artist-search-form");
+artistSearchFrom.addEventListener("submit", function(event) {
+  // stop the form from submitting!
+  event.preventDefault(); 
+  // grab the user input
+  var artist = this.querySelector("#query").value;
+  var type = this.querySelector("#type").value;
+  // do something with the user input
+  console.log(artist, "is a", type);
+});
 ```
 
 ## The `<label>` element and `placeholder` attribute
