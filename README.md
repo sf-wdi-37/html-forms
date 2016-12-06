@@ -73,7 +73,7 @@ By default, when a form is submitted, it generates an HTTP request. In the openi
 
 ###Challenge: Doomed?
 
-Create an html `form` that, on submit, sends the user to "hasthelargehadroncolliderdestroyedtheworldyet.com". Hint: what's the form action? Bonus: Can you change the submit button to say "Are we doomed?".
+Create an html `form` that, on submit, sends the user to "hasthelargehadroncolliderdestroyedtheworldyet.com". This form will only have one input: the submit button. Hint: what's the form action? Bonus: Can you change the submit button to say "Are we doomed?".
 
 <details>
 <summary>Example solution</summary>
