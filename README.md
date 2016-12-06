@@ -113,7 +113,7 @@ Radio buttons or checkboxes:
   group (or name) can be checked.
 - **`value`**: the data or value that is returned for a specific group (a multi-element control), if
   this element is checked.
-  
+
 ### Challenge: Login Form
 
 Create an html `form` with two inputs: one for a username (named "username"), the other for password (named "password") (normally you don't see your password when you type it, so make sure it's blocked out!). What happens in the URL when you click submit?
@@ -245,7 +245,7 @@ $("form").on("submit", function(event){
 > **Reminder**: You do not need jQuery to submit a form.
 
 
-## Sexy Forms
+## Better Forms
 #### The `<label>` Element
 We encourage you to always use the optional `<label>` tag with each of your form inputs.
 
