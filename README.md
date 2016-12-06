@@ -28,6 +28,19 @@ Forms are an important way a web application receive user input. The proper use 
 - Understand the basics of the client/server model
 - Have exposure to jQuery & Bootstrap
 
+### What is HTTP?
+
+HTTP stands for *hypertext transfer protocol*. It is the standard that determines the data format of any information moving between websites. To make an HTTP request, you need three things.
+
+1. An address where you'll make the request.
+2. An HTTP verb, which will specify the action you request at that address. Here are the possible HTTP verbs:
+
+POST - (Create) create an entry in the database we access.
+GET - (Read) find and return an entry from the database.
+PUT - (Update/replace) change a specific entry at that address by replacing it with a new entry.
+PATCH - (Update/modify) change a specific entry at that address by updating it with new data.
+DELETE - (Delete) remove an entry from the database.
+
 ### An Example `<form>` Element (Tag)
 
 ```html
