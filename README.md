@@ -57,10 +57,10 @@ HTTP stands for *hypertext transfer protocol*. It is the standard that determine
 
 #### Attributes
 
-In the opening of the `<form>` tag you can see two attributes: `method` & `action`
+By default, when a form is submitted, it generates an HTTP request. In the opening of the `<form>` tag you can see two attributes: `method` & `action`
 
 - **method**: the HTTP verb (method) that the browser uses to submit the form.
-- **action**: the path of the HTTP request page that processes the information submitted via the form.
+- **action**: the path of the HTTP request page that processes the information submitted via the form. Although it's a bit strange, `action` specifies *where* to take action - it's the address for the HTTP request.
 
 >A `route` is simply a combination of a method & action. For example `GET '/page'` or `POST '/users'` are both valid routes.
 
@@ -110,6 +110,13 @@ Create an html `form` that, on submit, sends the user to "hasthelargehadroncolli
 [submit]: https://raw.github.com/h4w5/html_form_cheatsheet_images/master/input-submit.png
 
 ### Important Attributes
+
+
+You may be thinking to yourself, "an HTTP request has optional data that it should be able to send too. Where does that come from in the form?"
+
+Great question!
+
+The data portion comes from the names and values of the inputs!
 
 All input types (including `<textarea>`s):
 
