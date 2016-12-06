@@ -206,7 +206,7 @@ We are making a "GET" request to "https://musicbrainz.org/search".
 <details>
 <summary>**What data will be submitted to the server?** (Click Here)</summary>
 <br>
-artist: "Adele", type: "artist"
+query: "Adele", type: "artist"
 </details>
 
 <details>
