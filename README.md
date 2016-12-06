@@ -113,17 +113,9 @@ Create an html `form` that, on submit, sends the user to "hasthelargehadroncolli
 
 ### Important Attributes
 
+All input types (including `<textarea>`s) have the following attributes:
 
-You may be thinking to yourself, "an HTTP request has optional data that it should be able to send too. Where does that come from in the form?"
-
-Great question!
-
-The data portion comes from the names and values of the inputs!
-
-All input types (including `<textarea>`s):
-
-- **`type`**: the type of data that is being input (affects the "widget" that is used to display this
-  element by the browser).
+- **`type`**: the type of data that is being input (affects the "widget" that is used to display this element by the browser).
 - **`name`**: the key used to describe this data in the HTTP request.
 - **`id`**: the unique identifier that other HTML elements, JavaScript and CSS use to access this
   element in the browser.
@@ -136,10 +128,15 @@ All input types (including `<textarea>`s):
 Radio buttons or checkboxes:
 
 - **`checked`**: a Boolean that indicates whether the control is selected by default (is false unless).
-- **`name`**: the group to which this element is connected. For radio buttons, only one element per
-  group (or name) can be checked.
-- **`value`**: the data or value that is returned for a specific group (a multi-element control), if
-  this element is checked.
+- **`name`**: the group to which this element is connected. For radio buttons, only one element per group (or name) can be checked.
+- **`value`**: the data or value that is returned for a specific group (a multi-element control), if this element is checked.
+
+
+You may be thinking to yourself, "an HTTP request has optional data that it should be able to send too. Where does that come from in the form?"
+
+Great question!
+
+The data portion comes from the `name` and `value` attributes of the inputs!
 
 ### Challenge: Login Form
 
