@@ -30,6 +30,9 @@ Forms are an important way a web application receive user input. The proper use 
 
 ### What is HTTP?
 
+![image](https://cloud.githubusercontent.com/assets/6520345/20934822/5eab66aa-bb91-11e6-937b-ffe856952f1a.png)
+
+
 HTTP stands for *hypertext transfer protocol*. It is the standard that determines the data format of any information moving between websites. To make an HTTP request, you need three things.
 
 1. An address where you'll make the request.
@@ -61,7 +64,7 @@ In the opening of the `<form>` tag you can see two attributes: `method` & `actio
 
 >A `route` is simply a combination of a method & action. For example `GET '/page'` or `POST '/users'` are both valid routes.
 
->For now simply understand that it is convention for [GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) to be used in a request when the client wants to receive data, and for [POST](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5) to be used in a request when the client wants to send data.
+>For now simply understand that it is convention for [GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) to be used in a request when the person using your site (the client) wants to receive data, and for [POST](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5) to be used in a request when the client wants to send data.
 
 ###Challenge: Doomed?
 
