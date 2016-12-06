@@ -16,6 +16,7 @@ Forms are an important way a web application receive user input. The proper use 
 <!-- specific/measurable goal for students to achieve -->
 *After this workshop, developers will be able to:*
 
+- Understand the basics of the client/server model
 - Evaluate the proper usage of HTML form and input options
 - Compare and contrast the difference between a `method` and an `action`
 - Create forms that generate query parameters
@@ -25,7 +26,6 @@ Forms are an important way a web application receive user input. The proper use 
 *Before this workshop, developers should already be able to:*
 
 - Write HTML & JavaScript
-- Understand the basics of the client/server model
 - Have exposure to jQuery & Bootstrap
 
 ### What is HTTP?
@@ -45,6 +45,11 @@ HTTP stands for *hypertext transfer protocol*. It is the standard that determine
     * DELETE - (Delete) remove an entry from the database.
 
 3. (Optional) Any data that might be necessary in passing along your request.
+
+**Client / Server Model**
+
+![client/server](https://mdn.mozillademos.org/files/4291/client-server.png)
+
 
 ### An Example `<form>` Element (Tag)
 
@@ -82,9 +87,6 @@ Create an html `form` that, on submit, sends the user to "hasthelargehadroncolli
 </details>
 
 
-**Client / Server Model**
-
-![client/server](https://mdn.mozillademos.org/files/4291/client-server.png)
 
 ## Common Inputs
 
