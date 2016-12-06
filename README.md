@@ -35,11 +35,13 @@ HTTP stands for *hypertext transfer protocol*. It is the standard that determine
 1. An address where you'll make the request.
 2. An HTTP verb, which will specify the action you request at that address. Here are the possible HTTP verbs:
 
-POST - (Create) create an entry in the database we access.
-GET - (Read) find and return an entry from the database.
-PUT - (Update/replace) change a specific entry at that address by replacing it with a new entry.
-PATCH - (Update/modify) change a specific entry at that address by updating it with new data.
-DELETE - (Delete) remove an entry from the database.
+    * POST - (Create) create an entry in the database we access.
+    * GET - (Read) find and return an entry from the database.
+    * PUT - (Update/replace) change a specific entry at that address by replacing it with a new entry.
+    * PATCH - (Update/modify) change a specific entry at that address by updating it with new data.
+    * DELETE - (Delete) remove an entry from the database.
+
+3. (Optional) Any data that might be necessary in passing along your request.
 
 ### An Example `<form>` Element (Tag)
 
