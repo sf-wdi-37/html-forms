@@ -195,7 +195,7 @@ It will be in the form of a query parameter: `?query=adele&type=artist`
 
 Sometimes we want to submit a form, in the background, without ever refreshing the page. This is a common pattern in modern "single page applications". How do you submit form data *in the background*?
 
-When a form is submitted it triggers the `submit` event. We can set an event listener on the form using an element's method [`.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). Additionally, in order to **stop** the form from submitting, we have to prevent it's *default* behavior. Calling `preventDefault` will allow us to later us AJAX to submit the form data without refreshing the page!
+When a form is submitted it triggers the `submit` event. We can set an event listener on the form using an element's method [`.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). Additionally, in order to **stop** the form from submitting, we have to prevent its *default* behavior. Calling `preventDefault` will allow us to later us AJAX to submit the form data without refreshing the page!
 
 ``` javascript
 $("#artist-search-form").addEventListener("submit", function(event) {
