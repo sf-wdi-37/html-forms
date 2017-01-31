@@ -26,14 +26,14 @@ Forms are an important way a web application receive user input. The proper use 
 
 - Write HTML & JavaScript
 - Understand the basics of the client/server model
-- Have exposure to jQuery & Bootstrap
 
 ### An Example `<form>` Element (Tag)
 
 ```html
-<form method="POST" action="/page">
-  <input type="text" name="pageName" />
-  <input type="submit" value="Create" />
+<form method="POST" action="/entries">
+  <input type="text" name="title" />
+  <input type="text" name="content" />
+  <input type="submit" value="Create an Entry" />
 </form>
 ```
 
@@ -144,19 +144,19 @@ Create an html `form` with two inputs: one for a username (named "username"), th
 ```
 
 <details>
-<summary>**What endpoint/action are we submitting to?** (Click Here)</summary>
+<summary>**What endpoint/action are we submitting to?**</summary>
 <br>
 We did not supply a form `action`. That means that it will default to the current endpoint. In otherwords, you will refresh the current page.
 </details>
 
 <details>
-<summary>**What data will be submitted to the server?** (Click Here)</summary>
+<summary>**What data will be submitted to the server?**</summary>
 <br>
 instrument: "bongos"
 </details>
 
 <details>
-<summary>**What will that data look like? How will it be formatted?** (Click Here)</summary>
+<summary>**What will that data look like? How will it be formatted**</summary>
 <br>
 `?instrument=bongos`
 </details>
@@ -165,127 +165,85 @@ instrument: "bongos"
 **2)** Given the following HTML...
 
 ``` html
-<form action="https://musicbrainz.org/search" method="GET">
-    <label for="artist">Search by Music Artist</label>
-    <input id="artist" name="query" value="Adele">
-    <input name="type" value="artist" hidden>
+<form id="artist-search-form" action="https://musicbrainz.org/search" method="GET">
+    <label for="query">Search by Artist</label>
+    <input id="query" name="query" value="Adele">
+    <input id="type" name="type" value="artist" hidden>
     <input type="submit">
 </form>
 ```
 
 <details>
-<summary>**What endpoint/action are we submitting to?** (Click Here)</summary>
+<summary>**What endpoint/action are we submitting to?**</summary>
 <br>
 We are making a "GET" request to "https://musicbrainz.org/search".
 </details>
 
 <details>
-<summary>**What data will be submitted to the server?** (Click Here)</summary>
+<summary>**What data will be submitted to the server?**</summary>
 <br>
 artist: "Adele", type: "artist"
 </details>
 
 <details>
-<summary>**What will that data look like? How will it be formatted?** (Click Here)</summary>
+<summary>**What will that data look like? How will it be formatted?**</summary>
 <br>
 It will be in the form of a query parameter: `?query=adele&type=artist`
 </details>
 
-## Form Submission & jQuery
-> **Important**: You do not need jQuery to submit a form. You do not need jQuery to submit a form. You do not need jQuery to submit a form.
+## Form Submission
 
 Sometimes we want to submit a form, in the background, without ever refreshing the page. This is a common pattern in modern "single page applications". How do you submit form data *in the background*?
 
-When a form is submitted it triggers the `submit` event. We can listen to this event using jQuery.
+When a form is submitted it triggers the `submit` event. We can set an event listener on the form using an element's method [`.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). Additionally, in order to **stop** the form from submitting, we have to prevent it's *default* behavior. Calling `preventDefault` will allow us to later us AJAX to submit the form data without refreshing the page!
 
 ``` javascript
-$("form").on("submit", function(event){
-    alert("See you later! You're submitting a form!")
+$("#artist-search-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Stops the form from submitting!
+    alert("We've submitted the form!")
 })
 ```
 
-In order to **stop** the form from submitting, we have to prevent it's *default* behavior.
+>Why is `.preventDefault` useful?
+
+Let's grab data from the form by using the keyword `this`, which refers to the element that triggered the event—aka, the form! Then let's drill down into the forms data using `.querySelector` to target children elements inside it.
 
 ``` javascript
-$("form").on("submit", function(event){
-    event.preventDefault(); // Stops the form from submitting!
-    alert("You're not going anywhere! (You prevented the form from submitting).")
-})
+// target the form
+var artistSearchFrom = document.querySelector("#artist-search-form");
+artistSearchFrom.addEventListener("submit", function(event) {
+  // stop the form from submitting!
+  event.preventDefault(); 
+  // grab the user input
+  var artist = this.querySelector("#query").value;
+  var type = this.querySelector("#type").value;
+  // do something with the user input
+  console.log(artist, "is a", type);
+});
 ```
 
-If we want to grab a value from our form, we can use jQuery's [`val` method](http://api.jquery.com/val/).
-
-``` javascript
-$("input#artist").val(); // "Adele"
-$("input[name=query]").val(); // "Adele"
-$("input#artist").attr("name"); // "query"
-```
-
-> **Note**: jQuerys `text` method will not work on inputs!
-
-If we want to grab **all** of the data (name/value pairs) in the form, we can use jQuery's [`serialize` method](http://api.jquery.com/serialize/).
-
-``` javascript
-$("form").serialize(); // e.g. "?query=Adele&type=artist"
-```
-
-Generally we will do this when the form is "submit". Calling `preventDefault` allows us to instead submit the form data in the background without ever refreshing the page!
-
-``` javascript
-$("form").on("submit", function(event){
-    event.preventDefault(); // Stops the form from submitting!
-    var formData = $(this).serialize();
-    console.log("form data is:", formData);
-    // ... verify the user didn't miss anything
-    // ... send the form data to the server
-    // ... wait for a response
-    // ... (we'll learn these additional steps soon enough)
-```
-
-> **Reminder**: You do not need jQuery to submit a form.
-
-
-## Sexy Forms
-#### The `<label>` Element
+## The `<label>` element and `placeholder` attribute
 We encourage you to always use the optional `<label>` tag with each of your form inputs.
 
 >"This is the most important element if you want to build accessible forms." — MDN
 
-There are two ways to use labels correctly:
+**Label**
 
 ```html
-<!-- Simple (nested) label example -->
-<label>Username
-  <input type="text" name="username" />
-</label>
-
-<!-- Using the "for" attribute with the input's id -->
-<!-- This is the preferred method if you are using Bootstrap -->
-<label for="password">Username</label>
+<label for="password">Password:</label>
 <input id="password" type="text" name="password" />
 ```
 
-> Make sure the label's `for` attribute matches the input's `id` attribute!
+>"*Do not use the placeholder attribute instead of a <label> element*. Their purposes are different: the <label> attribute describes the role of the form element; that is, it indicates what kind of information is expected, the placeholder attribute is a hint about the format the content should take. There are cases in which the placeholder attribute is never displayed to the user, so the form must be understandable without it." -MDN
 
-#### Bootstrap Forms
-Out of the box, unstyled HTML5 `inputs` look *terrible*.
 
-Bootstrap to the rescue!
+**Placeholder**
 
-``` html
-<form>
-    <div class="form-group">
-        <label for="exampleInput">Example Bootstrap Input</label>
-        <input type="text" class="form-control" id="exampleInput">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+```html
+<input type="text" name="username" placeholder="Enter a unique username...">
 ```
 
-Note that the `form-group` class is meant to "group" together `label`/`input` pairs (and give them more vertical whitespace / breathing room). Also note that each `input` element receives a `form-control` class.
-
-For super good looking forms, you'll need to dig into the docs: [Bootstrap Forms](https://getbootstrap.com/css/)
-
+> Make sure the label's `for` attribute matches the input's `id` attribute!
 
 ## Common Validations
 
@@ -336,7 +294,7 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 
 **1)** Create an html form that contains the html5 [color-picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color) input (named "i"). When the user picks a color, let's say one with the hex code `#18967A`, and clicks submit, redirect them to, e.g. "https://www.wolframalpha.com/input/?i=%2318967A".
 
-> The `#` character automatically gets converted to `%23` in this context because it is a special character and **not a fragment** in this context.
+> **Note:** the `#` character automatically gets converted to `%23` in this context because it is a special character and **not a fragment** in this context.
 
 <details>
 <summary>Example solution</summary>
@@ -369,14 +327,11 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 
 </details>
 
-**3)** Bonus: Bootstrap the forms!
-
 ## Closing Thoughts
 
 * What is a form `method` and a form `action`?
 * How do we prevent a form's submission from leaving or refreshing the current page?
 * Do validations make our application more secure?
-* What does jQuery's `.serialize` method do?
 
 ## Additional Resources
 
