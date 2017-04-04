@@ -354,6 +354,8 @@ You may need the user to enter a specific amount of characters. Let's say you ne
 
 </details>
 
+**3)** Create an HTML form with at least 4 different input types. Make it appear in 2 columns on a large screen and 1 column on a mobile screen. Don't include an `action` or `method` attribute. Instead, create an event listener that prevents the default action from happening and instead `console.log`s all of the names and values from the form. (Hint: investigate [`serialize`](https://api.jquery.com/serialize/) to help you gather these names and values.)
+
 ## Closing Thoughts
 
 * What is a form `method` and a form `action`?
