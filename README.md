@@ -169,19 +169,19 @@ Create an html `form` with two inputs: one for a username (named "username"), th
 ```
 
 <details>
-<summary>**What endpoint/action are we submitting to?**</summary>
+<summary> <strong>What endpoint/action are we submitting to?</strong> </summary>
 <br>
 We did not supply a form `action`. That means that it will default to the current endpoint. In otherwords, you will refresh the current page.
 </details>
 
 <details>
-<summary>**What data will be submitted to the server?**</summary>
+<summary><strong>What data will be submitted to the server?</strong></summary>
 <br>
 instrument: "bongos"
 </details>
 
 <details>
-<summary>**What will that data look like? How will it be formatted**</summary>
+<summary><strong>What will that data look like? How will it be formatted</strong></summary>
 <br>
 `?instrument=bongos`
 </details>
@@ -238,7 +238,7 @@ Let's grab data from the form by using the keyword `this`, which refers to the e
 var artistSearchFrom = document.querySelector("#artist-search-form");
 artistSearchFrom.addEventListener("submit", function(event) {
   // stop the form from submitting!
-  event.preventDefault(); 
+  event.preventDefault();
   // grab the user input
   var artist = this.querySelector("#query").value;
   var type = this.querySelector("#type").value;
