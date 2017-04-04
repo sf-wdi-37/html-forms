@@ -199,19 +199,19 @@ instrument: "bongos"
 ```
 
 <details>
-<summary>**What endpoint/action are we submitting to?**</summary>
+<summary><strong>What endpoint/action are we submitting to?</strong></summary>
 <br>
 We are making a "GET" request to "https://musicbrainz.org/search".
 </details>
 
 <details>
-<summary>**What data will be submitted to the server?**</summary>
+<summary><strong>What data will be submitted to the server?</strong></summary>
 <br>
 query: "Adele", type: "artist"
 </details>
 
 <details>
-<summary>**What will that data look like? How will it be formatted?**</summary>
+<summary><strong>What will that data look like? How will it be formatted?</strong></summary>
 <br>
 It will be in the form of a query parameter: `?query=adele&type=artist`
 </details>
