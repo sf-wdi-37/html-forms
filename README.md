@@ -16,6 +16,7 @@ Forms are an important way a web application receive user input. The proper use 
 <!-- specific/measurable goal for students to achieve -->
 *After this workshop, developers will be able to:*
 
+- Understand the basics of the client/server model
 - Evaluate the proper usage of HTML form and input options
 - Compare and contrast the difference between a `method` and an `action`
 - Create forms that generate query parameters
@@ -26,6 +27,29 @@ Forms are an important way a web application receive user input. The proper use 
 
 - Write HTML & JavaScript
 - Understand the basics of the client/server model
+
+### What is HTTP?
+
+![image](https://cloud.githubusercontent.com/assets/6520345/20934822/5eab66aa-bb91-11e6-937b-ffe856952f1a.png)
+
+
+HTTP stands for *hypertext transfer protocol*. It is the standard that determines the data format of any information moving between websites. To make an HTTP request, you need three things.
+
+1. An address where you'll make the request.
+2. An HTTP verb, which will specify the action you request at that address. Here are the possible HTTP verbs:
+
+    * POST - (Create) create an entry in the database we access.
+    * GET - (Read) find and return an entry from the database.
+    * PUT - (Update/replace) change a specific entry at that address by replacing it with a new entry.
+    * PATCH - (Update/modify) change a specific entry at that address by updating it with new data.
+    * DELETE - (Delete) remove an entry from the database.
+
+3. (Optional) Any data that might be necessary in passing along your request.
+
+**Client / Server Model**
+
+![client/server](https://mdn.mozillademos.org/files/4291/client-server.png)
+
 
 ### An Example `<form>` Element (Tag)
 
@@ -39,18 +63,18 @@ Forms are an important way a web application receive user input. The proper use 
 
 #### Attributes
 
-In the opening of the `<form>` tag you can see two attributes: `method` & `action`
+By default, when a form is submitted, it generates an HTTP request. In the opening of the `<form>` tag you can see two attributes: `method` & `action`
 
 - **method**: the HTTP verb (method) that the browser uses to submit the form.
-- **action**: the path of the HTTP request page that processes the information submitted via the form.
+- **action**: the path of the HTTP request page that processes the information submitted via the form. Although it's a bit strange, `action` specifies *where* to take action - it's the address for the HTTP request.
 
 >A `route` is simply a combination of a method & action. For example `GET '/page'` or `POST '/users'` are both valid routes.
 
->For now simply understand that it is convention for [GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) to be used in a request when the client wants to receive data, and for [POST](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5) to be used in a request when the client wants to send data.
+>For now simply understand that it is convention for [GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) to be used in a request when the person using your site (the client) wants to receive data, and for [POST](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5) to be used in a request when the client wants to send data.
 
 ###Challenge: Doomed?
 
-Create an html `form` that, on submit, sends the user to "hasthelargehadroncolliderdestroyedtheworldyet.com". Hint: what's the form action? Bonus: Can you change the submit button to say "Are we doomed?".
+Create an html `form` that, on submit, sends the user to "hasthelargehadroncolliderdestroyedtheworldyet.com". This form will only have one input: the submit button. Hint: what's the form action? Bonus: Can you change the submit button to say "Are we doomed?".
 
 <details>
 <summary>Example solution</summary>
@@ -64,9 +88,6 @@ Create an html `form` that, on submit, sends the user to "hasthelargehadroncolli
 </details>
 
 
-**Client / Server Model**
-
-![client/server](https://mdn.mozillademos.org/files/4291/client-server.png)
 
 ## Common Inputs
 
@@ -93,10 +114,9 @@ Create an html `form` that, on submit, sends the user to "hasthelargehadroncolli
 
 ### Important Attributes
 
-All input types (including `<textarea>`s):
+All input types (including `<textarea>`s) have the following attributes:
 
-- **`type`**: the type of data that is being input (affects the "widget" that is used to display this
-  element by the browser).
+- **`type`**: the type of data that is being input (affects the "widget" that is used to display this element by the browser).
 - **`name`**: the key used to describe this data in the HTTP request.
 - **`id`**: the unique identifier that other HTML elements, JavaScript and CSS use to access this
   element in the browser.
@@ -109,11 +129,16 @@ All input types (including `<textarea>`s):
 Radio buttons or checkboxes:
 
 - **`checked`**: a Boolean that indicates whether the control is selected by default (is false unless).
-- **`name`**: the group to which this element is connected. For radio buttons, only one element per
-  group (or name) can be checked.
-- **`value`**: the data or value that is returned for a specific group (a multi-element control), if
-  this element is checked.
-  
+- **`name`**: the group to which this element is connected. For radio buttons, only one element per group (or name) can be checked.
+- **`value`**: the data or value that is returned for a specific group (a multi-element control), if this element is checked.
+
+
+You may be thinking to yourself, "an HTTP request has optional data that it should be able to send too. Where does that come from in the form?"
+
+Great question!
+
+The data portion comes from the `name` and `value` attributes of the inputs!
+
 ### Challenge: Login Form
 
 Create an html `form` with two inputs: one for a username (named "username"), the other for password (named "password") (normally you don't see your password when you type it, so make sure it's blocked out!). What happens in the URL when you click submit?
@@ -182,7 +207,7 @@ We are making a "GET" request to "https://musicbrainz.org/search".
 <details>
 <summary>**What data will be submitted to the server?**</summary>
 <br>
-artist: "Adele", type: "artist"
+query: "Adele", type: "artist"
 </details>
 
 <details>
@@ -223,6 +248,7 @@ artistSearchFrom.addEventListener("submit", function(event) {
 ```
 
 ## The `<label>` element and `placeholder` attribute
+
 We encourage you to always use the optional `<label>` tag with each of your form inputs.
 
 >"This is the most important element if you want to build accessible forms." — MDN
