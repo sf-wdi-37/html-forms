@@ -72,15 +72,15 @@ By default, when a form is submitted, it generates an HTTP request. In the openi
 
 >For now simply understand that it is convention for [GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) to be used in a request when the person using your site (the client) wants to receive data, and for [POST](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5) to be used in a request when the client wants to send data.
 
-###Challenge: Doomed?
+### Challenge: Doomed?
 
-Create an html `form` that, on submit, sends the user to "hasthelargehadroncolliderdestroyedtheworldyet.com". This form will only have one input: the submit button. Hint: what's the form action? Bonus: Can you change the submit button to say "Are we doomed?".
+Create an html `form` that, on submit, sends the user to "havewedestroyedtheworldyet.com". This form will only have one input: the submit button. Hint: what's the form action? Bonus: Can you change the submit button to say "Are we doomed?".
 
 <details>
 <summary>Example solution</summary>
 
 ```html
-<form action="http://hasthelargehadroncolliderdestroyedtheworldyet.com" method="GET">
+<form action="http://havewedestroyedtheworldyet.com" method="GET">
   <input type="submit" value="Are we doomed!?">
 </form>
 ```
@@ -114,7 +114,7 @@ Create an html `form` that, on submit, sends the user to "hasthelargehadroncolli
 
 ### Important Attributes
 
-All input types (including `<textarea>`s) have the following attributes:
+All input types (including `<textarea>`s) can have the following attributes:
 
 - **`type`**: the type of data that is being input (affects the "widget" that is used to display this element by the browser).
 - **`name`**: the key used to describe this data in the HTTP request.
@@ -220,7 +220,7 @@ It will be in the form of a query parameter: `?query=adele&type=artist`
 
 Sometimes we want to submit a form, in the background, without ever refreshing the page. This is a common pattern in modern "single page applications". How do you submit form data *in the background*?
 
-When a form is submitted it triggers the `submit` event. We can set an event listener on the form using an element's method [`.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). Additionally, in order to **stop** the form from submitting, we have to prevent its *default* behavior. Calling `preventDefault` will allow us to later us AJAX to submit the form data without refreshing the page!
+When a form is submitted it triggers the `submit` event. We can set an event listener on the form using an element's method [`.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). Additionally, in order to **stop** the form from submitting, we have to prevent its *default* behavior. Calling `preventDefault` will allow us to later use AJAX to submit the form data without refreshing the page!
 
 ``` javascript
 $("#artist-search-form").addEventListener("submit", function(event) {
@@ -231,7 +231,7 @@ $("#artist-search-form").addEventListener("submit", function(event) {
 
 >Why is `.preventDefault` useful?
 
-Let's grab data from the form by using the keyword `this`, which refers to the element that triggered the event—aka, the form! Then let's drill down into the forms data using `.querySelector` to target children elements inside it.
+Let's grab data from the form by using the keyword `this`, which refers to the element that triggered the event — aka, the form! Then let's drill down into the forms data using `.querySelector` to target children elements inside it.
 
 ``` javascript
 // target the form
@@ -269,15 +269,15 @@ We encourage you to always use the optional `<label>` tag with each of your form
 <input type="text" name="username" placeholder="Enter a unique username...">
 ```
 
-> Make sure the label's `for` attribute matches the input's `id` attribute!
+> Make sure a label's `for` attribute matches the input's `id` attribute!
 
 ## Common Validations
 
-Form validations help to prevent users from submitting bad data to the server. They are very important to improve UX, but *do not increase the security* of the application.
+Form validations help to prevent users from submitting bad data to the server. They are very important to improve UX, but *do not increase the security* of the application. Examples of common validations:
 
 * a missing or empty field (required)
 * an email address that was missing an "@" symbol (wrong pattern)
-* a password that is obiously too short (invalid length)
+* a password that is obviously too short (invalid length)
 
 #### `required` attribute
 
@@ -290,6 +290,7 @@ Try submitting the below form without entering your name:
   <button>Submit</button>
 </form>
 ```
+
 Notice the `required` attribute on the input. Therefore, the form will not submit until some information is entered into the field.
 
 #### `pattern` attribute
